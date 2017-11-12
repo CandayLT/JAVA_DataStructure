@@ -3,7 +3,7 @@ package Graph;
 /**
  * Created by TangChen on 17/11/7.
  */
-public class Graph {
+public class Graph implements IGraph{
     public int graphNum; //顶点个数
     public char[] vertexElement; //顶点元素集合
     public boolean graphKind; //图的种类
@@ -39,6 +39,7 @@ public class Graph {
                 }
                 System.out.println();
             }
+
             for(int j = 0; j < graphNum; j++) {
                 if(j == 0) {
                     System.out.print(vertexElement[i] + "  ");

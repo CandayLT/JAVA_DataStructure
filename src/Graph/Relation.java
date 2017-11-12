@@ -3,7 +3,7 @@ package Graph;
 /**
  * Created by TangChen on 17/11/7.
  */
-public class Relation<T> {
+public class Relation {
     public char[] relation;
 
     public void setRelation(char r1, char r2) {

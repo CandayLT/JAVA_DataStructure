@@ -24,7 +24,7 @@ public class DFS {
             isVisit.put(c, true);
 
             for (int i = 0; i < graph.graphNum; i++) {
-                if (graph.matrix[graph.locElement(c)][i] == 1 && !isVisit.get(graph.vertexElement[i])) {
+                if (graph.matrix[graph.locElement(c)][i] == 1) {
                     toDFS(graph.vertexElement[i]);
                 }
             }

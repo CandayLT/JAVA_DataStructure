@@ -1,8 +1,27 @@
-package Graph;
+import Graph.*;
+import LinkedList.*;
 
 public class Main {
 
     public static void main(String[] args) {
+        testDFS();
+        testLinkedList();
+    }
+
+    private static void testLinkedList() {
+        LinkedList<Integer> linkedList = new LinkedList<Integer>();
+
+        for(int i = 0; i <= 100; i++){
+            linkedList.add(i << 2);
+        }
+
+        linkedList.remove(3);
+        for(int i = 0; i <= 99; i++) {
+            System.out.println("LinkedList num " + i + " is " + linkedList.get(i));
+        }
+    }
+
+    static void testDFS() {
         char[] vertexElement = new char[8];
 
         vertexElement[0] = 'a';
@@ -38,8 +57,5 @@ public class Main {
         DFS dfs = new DFS(graph);
         dfs.toDFS('a');
         System.out.println();
-        for(int i = 0; i < dfs.DFSList.size(); i++){
-            //System.out.println(dfs.DFSList.get(i));
-        }
     }
 }
