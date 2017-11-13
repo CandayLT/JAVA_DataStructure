@@ -14,7 +14,6 @@ public final class SeparateChainingHashTable implements IHashTable{
 
     public SeparateChainingHashTable(int tableSize) {
         this.tableSize = MathUtils.nextPrime(tableSize);
-
         initEmptyHashTable();
     }
 

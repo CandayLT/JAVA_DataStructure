@@ -6,7 +6,7 @@ package LinkedList;
 public class LinkedList<E> {
     Node first;
     Node last;
-    int size;
+    private int size;
 
     public void add(E e) {
         Node newNode = new Node(e, null);

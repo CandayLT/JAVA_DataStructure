@@ -4,6 +4,7 @@ package Utils;
  * Created by TangChen on 17/11/13.
  */
 public class MathUtils {
+
     /**
      * 返回不小于某个整数的素数
      * @param num 整数

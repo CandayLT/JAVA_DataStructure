@@ -11,4 +11,5 @@ public interface IHashTable {
     public void makeEmpty();
     public void remove(int key);
     public int size();
+
 }
