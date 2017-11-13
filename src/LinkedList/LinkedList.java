@@ -20,32 +20,53 @@ public class LinkedList<E> {
         size++;
     }
 
-    public E get(int num) {
-        if (size < num + 1)
+    public E get(int position) {
+        if (size < position + 1)
             return null;
         else {
-            return find(num).e;
+            return find(position).e;
         }
     }
 
-    public boolean remove(int num) {
-        if(size > num + 1) {
-            find(num - 1).next = find(num).next;
+    public void add(int position, E e) {
+        if(position - 1 > size)
+            return;
+
+        size++;
+
+        if(position == 0) {
+            first = new Node(e, first);
+            return;
+        }
+
+        Node pNode = find(position - 1);
+        pNode.next = new Node(e, pNode.next);
+    }
+
+    public boolean remove(int position) {
+        if(size > position + 1) {
+            if(position == 0)
+                first = first.next;
+            else
+                find(position - 1).next = find(position).next;
             return true;
         }
 
         return false;
     }
 
-    public Node find(int num) {
+    public Node find(int position) {
         Node search = first;
-        for (int i = 0; i < num; i++) {
+        for (int i = 0; i < position; i++) {
             search = search.next;
         }
 
         return search;
     }
 
+    public int size() {
+        return size;
+    }
 
     private class Node {
         E e;

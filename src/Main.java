@@ -1,11 +1,31 @@
 import Graph.*;
+import HashTable.SeparateChainingHashTable;
 import LinkedList.*;
 
 public class Main {
 
     public static void main(String[] args) {
+        testHashTable0();
         testDFS();
         testLinkedList();
+    }
+
+    private static void testHashTable0() {
+        SeparateChainingHashTable hashTable = new SeparateChainingHashTable(10);
+
+        for(int i = 0; i < 10; i++) {
+            hashTable.insert(i * i);
+        }
+
+        for(int i = 0; i < 10; i++) {
+            System.out.print(i + " : ");
+
+            for(int j = 0; j < hashTable.hashTable[i].size(); j++) {
+                System.out.print(hashTable.hashTable[i].get(j) + " -> ");
+            }
+            System.out.println();
+        }
+        System.out.println();
     }
 
     private static void testLinkedList() {
