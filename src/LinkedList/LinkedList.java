@@ -23,9 +23,8 @@ public class LinkedList<E> {
     public E get(int position) {
         if (size < position + 1)
             return null;
-        else {
+        else
             return find(position).e;
-        }
     }
 
     public void add(int position, E e) {
@@ -57,9 +56,8 @@ public class LinkedList<E> {
 
     public Node find(int position) {
         Node search = first;
-        for (int i = 0; i < position; i++) {
+        for (int i = 0; i < position; i++)
             search = search.next;
-        }
 
         return search;
     }

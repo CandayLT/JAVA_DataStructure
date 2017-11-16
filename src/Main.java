@@ -7,13 +7,14 @@ public class Main {
 
     public static void main(String[] args) {
         testHashTable0(); //分离链接法
-        testHashTable1(); //开放地址法（1.线性探测 2.平方探测）
+        testHashTable1(true); //开放地址法（true线性探测 false平方探测）
+        testHashTable1(false);
         testDFS();
         testLinkedList();
     }
 
-    private static void testHashTable1() {
-        OpenAddressingHashing hashTable = new OpenAddressingHashing(13, false);
+    private static void testHashTable1(boolean type) {
+        OpenAddressingHashing hashTable = new OpenAddressingHashing(13, true);
         //linearProbing == false为平方探测，true为线性探测
 
         for(int i = 1; i <= 9; i++) {

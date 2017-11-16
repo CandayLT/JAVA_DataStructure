@@ -13,9 +13,8 @@ public class DFS {
     public DFS(Graph graph) {
         this.graph = graph;
 
-        for (int i = 0; i < graph.graphNum; i++) {
+        for (int i = 0; i < graph.graphNum; i++)
             isVisit.put(graph.vertexElement[i], false);
-        }
     }
 
     public void toDFS(char c) {
@@ -24,9 +23,8 @@ public class DFS {
             isVisit.put(c, true);
 
             for (int i = 0; i < graph.graphNum; i++) {
-                if (graph.matrix[graph.locElement(c)][i] == 1) {
+                if (graph.matrix[graph.locElement(c)][i] == 1)
                     toDFS(graph.vertexElement[i]);
-                }
             }
         }
     }

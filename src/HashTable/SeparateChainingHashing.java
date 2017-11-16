@@ -3,6 +3,8 @@ package HashTable;
 import LinkedList.*;
 import Utils.MathUtils;
 
+import java.util.HashMap;
+
 /**
  * 分离链接法简单实现
  * Created by TangChen on 17/11/13.
@@ -27,6 +29,7 @@ public final class SeparateChainingHashing implements IHashTable{
         for(int i = 0; i < tableSize; i++) {
             hashTable[i] = new LinkedList<Integer>();
         }
+
     }
 
     @Override
