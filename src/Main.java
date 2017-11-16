@@ -1,17 +1,35 @@
 import Graph.*;
-import HashTable.SeparateChainingHashTable;
+import HashTable.OpenAddressingHashing;
+import HashTable.SeparateChainingHashing;
 import LinkedList.*;
 
 public class Main {
 
     public static void main(String[] args) {
-        testHashTable0();
+        testHashTable0(); //分离链接法
+        testHashTable1(); //开放地址法（1.线性探测 2.平方探测）
         testDFS();
         testLinkedList();
     }
 
+    private static void testHashTable1() {
+        OpenAddressingHashing hashTable = new OpenAddressingHashing(13, false);
+        //linearProbing == false为平方探测，true为线性探测
+
+        for(int i = 1; i <= 9; i++) {
+            hashTable.insert(i * i + 1);
+        }
+
+        for(int i = 0; i < hashTable.tableSize; i++) {
+            System.out.print(i + " : ");
+            if(hashTable.hashEntries[i].getStatus() == OpenAddressingHashing.elementStatus.NORMAL)
+                System.out.print(hashTable.hashEntries[i].getE());
+            System.out.println();
+        }
+    }
+
     private static void testHashTable0() {
-        SeparateChainingHashTable hashTable = new SeparateChainingHashTable(10);
+        SeparateChainingHashing hashTable = new SeparateChainingHashing(10);
 
         for(int i = 0; i < 10; i++) {
             hashTable.insert(i * i);

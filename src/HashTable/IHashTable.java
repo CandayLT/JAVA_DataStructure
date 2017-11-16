@@ -1,5 +1,7 @@
 package HashTable;
 
+import java.util.HashMap;
+
 /**
  * Created by TangChen on 17/11/13.
  */
@@ -11,5 +13,4 @@ public interface IHashTable {
     public void makeEmpty();
     public void remove(int key);
     public int size();
-
 }

@@ -7,16 +7,17 @@ import Utils.MathUtils;
  * 分离链接法简单实现
  * Created by TangChen on 17/11/13.
  */
-public final class SeparateChainingHashTable implements IHashTable{
-    public int tableSize;
-    public int eSize;
+public final class SeparateChainingHashing implements IHashTable{
+    private int tableSize;
+    private int eSize;
     public LinkedList<Integer>[] hashTable;
 
-    public SeparateChainingHashTable(int tableSize) {
+    public SeparateChainingHashing(int tableSize) {
         this.tableSize = MathUtils.nextPrime(tableSize);
         initEmptyHashTable();
     }
 
+    @Override
     public final void initEmptyHashTable() {
         if (tableSize <= 0)
             return;
@@ -42,7 +43,7 @@ public final class SeparateChainingHashTable implements IHashTable{
     @Override
     public int position(int key) {
         for(int i = 0; i < hashTable[hash(key)].size(); i++){
-            if (((Integer)hashTable[hash(key)].get(i)) == key) {
+            if ((hashTable[hash(key)].get(i)) == key) {
                 return i;
             }
         }
