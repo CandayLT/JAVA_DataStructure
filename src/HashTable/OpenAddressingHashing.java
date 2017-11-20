@@ -2,6 +2,9 @@ package HashTable;
 
 import Utils.MathUtils;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * 哈希表的线性探测法
  * Created by TangChen on 17/11/16.
@@ -10,6 +13,7 @@ public class OpenAddressingHashing implements IHashTable{
     public int tableSize;
     private int elementNum;
     public HashEntry[] hashEntries;
+    private float loadFactor = 0.0f;
     private boolean linearProbing; //是否线性探测
 
     public enum elementStatus {
@@ -43,7 +47,12 @@ public class OpenAddressingHashing implements IHashTable{
             hashEntries[p].status = elementStatus.NORMAL;
             hashEntries[p].e = key;
             elementNum++;
+
+            loadFactor = elementNum / tableSize;
         }
+
+        if(loadFactor > 0.5)
+            reHashing();
     }
 
     @Override
@@ -81,15 +90,18 @@ public class OpenAddressingHashing implements IHashTable{
         return elementNum;
     }
 
-    public OpenAddressingHashing reHashing() {
-        HashEntry[] oldHashEntries = this.hashEntries;
-        OpenAddressingHashing newHashTable = new OpenAddressingHashing(MathUtils.nextPrime(tableSize * 2), linearProbing);
+    private void reHashing() {
+        tableSize = MathUtils.nextPrime(tableSize * 2);
+        List<HashEntry> oldHashEntries = new ArrayList<>();
 
-        for(int i = 0; i < oldHashEntries.length; i++)
-            if(oldHashEntries[i].status == elementStatus.NORMAL)
-                newHashTable.insert(oldHashEntries[i].e);
+        for(HashEntry entry : hashEntries)
+            if(entry.status == elementStatus.NORMAL)
+                oldHashEntries.add(entry);
 
-        return newHashTable;
+        initEmptyHashTable();
+
+        for(HashEntry entry : oldHashEntries)
+            this.insert(entry.e);
     }
 
     public class HashEntry {
