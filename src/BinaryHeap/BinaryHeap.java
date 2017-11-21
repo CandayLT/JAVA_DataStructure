@@ -32,19 +32,20 @@ public class BinaryHeap implements IHeap {
 
         int i, child;
 
-        for(i = 1; 2 * i <= size; i = child) {
+        for (i = 1; 2 * i <= size; i = child) {
             child = 2 * i;
 
-            if(child + 1 <= size && elements[child + 1] < elements [child])
+            if (child + 1 <= size && elements[child + 1] < elements[child])
                 child++;
 
-            if(lastElement > elements[child])
-                elements[i] = elements[child];
-            else
+            if (lastElement < elements[child])
                 break;
+
+            elements[i] = elements[child];
         }
 
         elements[i] = lastElement;
+
         return minElement;
     }
 
@@ -54,7 +55,7 @@ public class BinaryHeap implements IHeap {
             return false;
 
         int i = ++size;
-        for (; elements[i / 2] > element; i /= 2)
+        for(; elements[i / 2] > element; i /= 2)
             elements[i] = elements[i / 2];
 
         elements[i] = element;
