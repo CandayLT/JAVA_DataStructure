@@ -50,6 +50,43 @@ public class BinaryHeap implements IHeap {
     }
 
     @Override
+    public boolean buildHeap(Integer... elements) {
+        if(elements.length > capacity)
+            return false;
+
+        size = elements.length - 1;
+        this.elements = elements;
+
+        for(int i = size / 2; i > 0; i--) {
+            down(i);
+        }
+
+        return true;
+    }
+
+    @Override
+    public boolean down(int p) {
+        if(p >= size)
+            return false;
+
+        int child;
+        for(; 2 * p <= size; p = child) {
+            child = p * 2;
+
+            if(child + 1 <= size && elements[child + 1] < elements[child])
+                child++;
+
+            if(elements[p] > elements[child]) {
+                int temp = elements[p];
+                elements[p] = elements[child];
+                elements[child] = temp;
+            }
+        }
+
+        return true;
+    }
+
+    @Override
     public boolean insert(Integer element) {
         if (size + 1 >= capacity)
             return false;
@@ -60,5 +97,10 @@ public class BinaryHeap implements IHeap {
 
         elements[i] = element;
         return true;
+    }
+
+    public void printBinaryHeap() {
+        for(int i = 1; i <= size; i++)
+            System.out.print(elements[i] + " ");
     }
 }
