@@ -7,8 +7,8 @@ public class LeftistHeap implements ILeftistHeap {
     public HeapNode root;
 
     @Override
-    public LeftistHeap merge(LeftistHeap h) {
-        return merge1(this.root, h.root).getExternal();
+    public void merge(LeftistHeap h) {
+        merge1(this.root, h.root).getExternal();
     }
 
     public LeftistHeap() {
@@ -16,14 +16,26 @@ public class LeftistHeap implements ILeftistHeap {
     }
 
     @Override
-    public LeftistHeap insert(int e) {
-        HeapNode node = merge1(new HeapNode(0, e, null, null), this.root);
-        return (node.num < root.num ? root = node : node).getExternal();
+    public void insert(int e) {
+        HeapNode newNode = new HeapNode(e);
+
+        if(root == null) {
+            root = newNode;
+            return;
+        }
+
+        HeapNode node = merge1(newNode, root);
+
+        if (node.num < root.num) {
+            root = node;
+        }
     }
 
     @Override
-    public LeftistHeap deleteMin() {
-        return merge1(root.right, root.left).getExternal();
+    public int deleteMin() {
+        int min = root.num;
+        root = merge1(root.right, root.left);
+        return min;
     }
 
     private HeapNode merge1(HeapNode h1, HeapNode h2) {
@@ -39,8 +51,9 @@ public class LeftistHeap implements ILeftistHeap {
     }
 
     private HeapNode mergeNode(HeapNode h1, HeapNode h2) {
-        if (h1.left == null)
+        if (h1.left == null) {
             h1.left = h2;
+        }
 
         else {
             h1.right = merge1(h1.right, h2);
@@ -57,19 +70,13 @@ public class LeftistHeap implements ILeftistHeap {
     }
 
     public class HeapNode {
-        public int npl = -1;
-        public int num;
-        public HeapNode left;
-        public HeapNode right;
+        int npl;
+        int num;
+        HeapNode left = null;
+        HeapNode right = null;
 
-        HeapNode(int npl, int num, HeapNode left, HeapNode right) {
-            this.npl = npl;
+        HeapNode(int num) {
             this.num = num;
-            this.left = left;
-            this.right = right;
-
-            if(LeftistHeap.this.root == null)
-                LeftistHeap.this.root = this;
         }
 
         LeftistHeap getExternal() {
