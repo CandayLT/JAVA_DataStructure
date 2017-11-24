@@ -1,11 +1,13 @@
+import BinaryHeap.*;
 import Graph.*;
-import HashTable.OpenAddressingHashing;
-import HashTable.SeparateChainingHashing;
+import HashTable.*;
 import LinkedList.*;
 
 public class Main {
 
     public static void main(String[] args) {
+        printLeftistHeap();
+        printBinaryHeap();
         testHashTable0(); //分离链接法
         testHashTable1(true); //开放地址法（true线性探测 false平方探测）
         testHashTable1(false);
@@ -13,12 +15,38 @@ public class Main {
         testLinkedList();
     }
 
+    private static void printLeftistHeap() {
+        LeftistHeap leftistHeap = new LeftistHeap();
+
+        for(int i = 1; i <= 10; i++)
+            leftistHeap.insert(i);
+
+        leftistHeap.insert(0); //min == 0
+
+        leftistHeap.deleteMin(); // min == 1
+    }
+
+    private static void printBinaryHeap() {
+        BinaryHeap heap = new BinaryHeap(21);
+        Integer[] arrays = new Integer[] {-0xff, 150, 80, 40, 30, 10, 50, 110, 100, 20, 90, 60, 70, 120, 140, 130};
+        heap.buildHeap(arrays);
+        heap.printBinaryHeap();
+        System.out.println();
+
+        BinaryHeap heap2 = new BinaryHeap(11);
+        for(int i = 10; i >= 1; i--)
+            heap2.insert(i);
+        heap2.printBinaryHeap();
+        System.out.println();
+        System.out.println();
+    }
+
     private static void testHashTable1(boolean type) {
-        OpenAddressingHashing hashTable = new OpenAddressingHashing(13, true);
+        OpenAddressingHashing hashTable = new OpenAddressingHashing(100, type);
         //linearProbing == false为平方探测，true为线性探测
 
-        for(int i = 1; i <= 9; i++) {
-            hashTable.insert(i * i + 1);
+        for(int i = 1; i <= 50; i++) {
+            hashTable.insert(i * (i + 1));
         }
 
         for(int i = 0; i < hashTable.tableSize; i++) {
@@ -95,7 +123,7 @@ public class Main {
         graph.creatGraph(relations);
 
         DFS dfs = new DFS(graph);
-        dfs.toDFS('a');
+        dfs.toDFS('f');
         System.out.println();
     }
 }
