@@ -3,7 +3,7 @@ package BinaryHeap;
 /**
  * Created by TangChen on 17/11/22.
  */
-public interface IHeap {
+public interface IBinaryHeap {
     void destory();
     Integer findMin();
     Integer deleteMin();

@@ -4,7 +4,7 @@ package BinaryHeap;
  * 二叉堆
  * Created by TangChen on 17/11/22.
  */
-public class BinaryHeap implements IHeap {
+public class BinaryHeap implements IBinaryHeap {
     private Integer[] elements;
     private int size;
     private int capacity; //容量
