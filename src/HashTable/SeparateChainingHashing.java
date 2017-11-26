@@ -3,7 +3,7 @@ package HashTable;
 import LinkedList.*;
 import Utils.MathUtils;
 
-import java.util.HashMap;
+import java.util.ArrayList;
 
 /**
  * 分离链接法简单实现
@@ -41,6 +41,8 @@ public final class SeparateChainingHashing implements IHashTable{
     public void insert(int key) {
         hashTable[hash(key)].add(0, key);
         eSize++;
+        ArrayList a = new ArrayList();
+        a.iterator();
     }
 
     @Override

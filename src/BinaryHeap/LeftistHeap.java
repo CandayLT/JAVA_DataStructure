@@ -1,10 +1,11 @@
 package BinaryHeap;
 
 /**
+ * Name : 左式堆
  * Created by TangChen on 17/11/24.
  */
 public class LeftistHeap implements ILeftistHeap {
-    public HeapNode root;
+    private HeapNode root;
 
     public LeftistHeap() {
 
@@ -51,17 +52,19 @@ public class LeftistHeap implements ILeftistHeap {
     }
 
     private HeapNode mergeNode(HeapNode h1, HeapNode h2) {
-        if (h1.left == null) {
+        if (h1.left == null)
             h1.left = h2;
-        } else {
+
+        else {
             h1.right = merge1(h1.right, h2);
+
             if (h1.left.npl < h1.right.npl) {
                 HeapNode temp = h1.left;
                 h1.left = h1.right;
                 h1.right = temp;
             }
 
-            h1.npl = h1.right.npl + 1;
+            h1.npl = h1.right.npl + 1; //父节点npl=最小节点npl+1（即右儿子npl+1）
         }
 
         return h1;

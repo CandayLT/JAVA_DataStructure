@@ -1,7 +1,7 @@
 package BinaryHeap;
 
 /**
- * 二叉堆
+ * Name : 二叉堆
  * Created by TangChen on 17/11/22.
  */
 public class BinaryHeap implements IBinaryHeap {

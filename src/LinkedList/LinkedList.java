@@ -1,5 +1,7 @@
 package LinkedList;
 
+import java.util.Collections;
+
 /**
  * Created by TangChen on 17/11/13.
  */
@@ -18,6 +20,10 @@ public class LinkedList<E> {
         }
 
         size++;
+    }
+
+    public Node first() {
+        return first;
     }
 
     public E get(int position) {
@@ -54,7 +60,7 @@ public class LinkedList<E> {
         return false;
     }
 
-    public Node find(int position) {
+    private Node find(int position) {
         Node search = first;
         for (int i = 0; i < position; i++)
             search = search.next;
