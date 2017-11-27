@@ -59,15 +59,19 @@ public class LeftistHeap implements ILeftistHeap {
             h1.right = merge1(h1.right, h2);
 
             if (h1.left.npl < h1.right.npl) {
-                HeapNode temp = h1.left;
-                h1.left = h1.right;
-                h1.right = temp;
+                swapNode(h1);
             }
 
             h1.npl = h1.right.npl + 1; //父节点npl=最小节点npl+1（即右儿子npl+1）
         }
 
         return h1;
+    }
+
+    private void swapNode(HeapNode h) {
+        HeapNode temp = h.left;
+        h.left = h.right;
+        h.right = temp;
     }
 
     public class HeapNode {
