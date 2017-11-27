@@ -9,8 +9,8 @@ public class ShellSort {
         int increment, i, j, tmp;
         int n = input.length;
 
-        for (increment = n / 2; increment >= 1; increment /= 2) {
-            for (i = 1; i + increment < n; i++) {
+        for (increment = n/2; increment >= 1; increment /= 2) {
+            for (i = increment; i < n; i++) {
                 tmp = input[i];
 
                 for (j = i; j - increment >= 0 && input[j - increment] > tmp; j -= increment) {
@@ -20,6 +20,5 @@ public class ShellSort {
                 input[j] = tmp;
             }
         }
-
     }
 }
