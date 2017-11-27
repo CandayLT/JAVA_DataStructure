@@ -33,6 +33,7 @@ public class Main {
 
         showSortCostTime("Sort.InsertionSort", testArray.toArray(new Integer[]{}));
         showSortCostTime("Sort.ShellSort", testArray.toArray(new Integer[]{}));
+        showSortCostTime("Sort.HeapSort", testArray.toArray(new Integer[]{}));
     }
 
     private static void showSortCostTime(String name, Integer[] input) {

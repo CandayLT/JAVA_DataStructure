@@ -80,7 +80,8 @@ public class BinaryHeap implements IBinaryHeap {
                 int temp = elements[p];
                 elements[p] = elements[child];
                 elements[child] = temp;
-            }
+            } else
+                break;
         }
 
         return true;
