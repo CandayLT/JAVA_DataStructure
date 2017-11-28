@@ -28,12 +28,13 @@ public class Main {
 
         Random random = new Random();
 
-        for (int i = 1; i <= 180000; i++)
-            testArray.add(random.nextInt(1000000));
+        for (int i = 1; i <= 2 << 18; i++)
+            testArray.add(random.nextInt(2 << 20));
 
         showSortCostTime("Sort.InsertionSort", testArray.toArray(new Integer[]{}));
         showSortCostTime("Sort.ShellSort", testArray.toArray(new Integer[]{}));
         showSortCostTime("Sort.HeapSort", testArray.toArray(new Integer[]{}));
+        showSortCostTime("Sort.MergeSort", testArray.toArray(new Integer[]{}));
     }
 
     private static void showSortCostTime(String name, Integer[] input) {
@@ -45,7 +46,7 @@ public class Main {
             sortMethod.invoke(null, (Object) input);
             long finishTime = System.currentTimeMillis();
             double time = (finishTime - nowTime) / 1000.0;
-            System.out.println(sortClass.getSimpleName() + " cost : " + time + "s");
+            System.out.println(sortClass.getSimpleName() + "(" + input.length + " data）cost : " + time + "s");
         } catch (ClassNotFoundException | NoSuchMethodException | IllegalAccessException | InvocationTargetException e) {
             e.printStackTrace();
         }
