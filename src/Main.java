@@ -14,13 +14,13 @@ public class Main {
 
     public static void main(String[] args) {
         testSort();
-        printLeftistHeap();
-        printBinaryHeap();
-        testHashTable0(); //分离链接法
-        testHashTable1(true); //开放地址法（true线性探测 false平方探测）
-        testHashTable1(false);
-        testDFS();
-        testLinkedList();
+//        printLeftistHeap();
+//        printBinaryHeap();
+//        testHashTable0(); //分离链接法
+//        testHashTable1(true); //开放地址法（true线性探测 false平方探测）
+//        testHashTable1(false);
+//        testDFS();
+//        testLinkedList();
     }
 
     private static void testSort() {
@@ -31,10 +31,11 @@ public class Main {
         for (int i = 1; i <= 2 << 18; i++)
             testArray.add(random.nextInt(2 << 20));
 
-        showSortCostTime("Sort.InsertionSort", testArray.toArray(new Integer[]{}));
+        //showSortCostTime("Sort.InsertionSort", testArray.toArray(new Integer[]{}));
         showSortCostTime("Sort.ShellSort", testArray.toArray(new Integer[]{}));
         showSortCostTime("Sort.HeapSort", testArray.toArray(new Integer[]{}));
         showSortCostTime("Sort.MergeSort", testArray.toArray(new Integer[]{}));
+        showSortCostTime("Sort.QuickSort", testArray.toArray(new Integer[]{}));
     }
 
     private static void showSortCostTime(String name, Integer[] input) {
