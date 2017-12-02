@@ -23,20 +23,21 @@ public class HeapSort {
             if (child + 1 != limit && input[child] < input[child + 1])
                 child++;
 
-            if (input[p] < input[child]) {
-                int temp = input[p];
-                input[p] = input[child];
-                input[child] = temp;
-            } else
+            if (input[p] < input[child])
+                swap(input, p, child);
+            else
                 break;
         }
     }
 
     public static void deleteMax(Integer[] input, int limit) {
-        int maxTemp = input[0];
-        input[0] = input[limit];
-        input[limit] = maxTemp;
-
+        swap(input, 0, limit);
         down(input, 0, --limit);
+    }
+
+    private static void swap(Integer[] input, int i, int limit) {
+        int maxTemp = input[i];
+        input[i] = input[limit];
+        input[limit] = maxTemp;
     }
 }

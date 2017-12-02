@@ -13,7 +13,7 @@ public class ShellSort {
             for (i = increment; i < n; i++) {
                 tmp = input[i];
 
-                for (j = i; j - increment >= 0 && input[j - increment] > tmp; j -= increment) {
+                for (j = i; j >= increment && input[j - increment] > tmp; j -= increment) {
                     input[j] = input[j - increment];
                 }
 

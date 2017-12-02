@@ -24,33 +24,29 @@ public class QuickSort {
         return input[right - 1];
     }
 
-    private static void swap(Integer[] input, int swap1, int swap2) {
-        int temp = input[swap1];
-        input[swap1] = input[swap2];
-        input[swap2] = temp;
-    }
-
     public static void quickSort(Integer[] input, int left, int right) {
-        int i, j, pivot;
-
         if (left < right) {
-            i = left;
-            j = right - 1;
-            pivot = getPivot(input, left, right);
+            int pivot = getPivot(input, left, right);
+            int i = left, j = right - 1;
 
-            for (;;) {
+            for(; ;) {
                 while (input[++i] < pivot);
                 while (input[--j] > pivot);
 
                 if (i > j)
-                    break;
-
-                swap(input, i, j);
+                    swap(input, i, j);
+                else break;
             }
-            swap(input, i, right - 1);
 
+            swap(input, i, right - 1);
             quickSort(input, left, i - 1);
             quickSort(input, i + 1, right);
         }
+    }
+
+    private static void swap(Integer[] input, int swap1, int swap2) {
+        int temp = input[swap1];
+        input[swap1] = input[swap2];
+        input[swap2] = temp;
     }
 }

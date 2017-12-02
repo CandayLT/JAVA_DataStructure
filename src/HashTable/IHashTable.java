@@ -1,6 +1,5 @@
 package HashTable;
 
-import java.util.HashMap;
 
 /**
  * Created by TangChen on 17/11/13.

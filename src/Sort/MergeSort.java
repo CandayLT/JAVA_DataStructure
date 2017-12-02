@@ -24,25 +24,25 @@ public class MergeSort {
 
     //merge的思想是分治中的"治"，即将两个排序好的有序数组input[left - center]和input[center + 1 - right]合并
     private static void merge(Integer[] input, Integer[] temp, int left, int center, int right) {
-        int leftArrayPos = left, rightArrayPos = center + 1;
-        int tPos;
+        int leftPos = left, rightPos = center + 1;
 
-        //归并两个数组
-        for (tPos = 0; leftArrayPos <= center && rightArrayPos <= right; tPos++) {
-            if (input[leftArrayPos] <= input[rightArrayPos])
-                temp[tPos] = input[leftArrayPos++];
+        int tPos = 0;
+        for (; leftPos <= left && rightPos <= right; tPos++) {
+            if (input[leftPos] < input[right])
+                temp[tPos++] = input[leftPos++];
             else
-                temp[tPos] = input[rightArrayPos++];
+                temp[tPos++] = input[rightPos++];
         }
 
-        while (leftArrayPos <= center)
-            temp[tPos++] = input[leftArrayPos++];
-
-        while (rightArrayPos <= right)
-            temp[tPos++] = input[rightArrayPos++];
+        while (leftPos <= left || rightPos <= right) {
+            if (leftPos <= left)
+                temp[tPos++] = input[left++];
+            else
+                temp[tPos++] = input[right++];
+        }
 
         tPos = 0;
         while (left <= right)
-            input[left++] = temp[tPos++];
+            input[left++] = input[tPos++];
     }
 }

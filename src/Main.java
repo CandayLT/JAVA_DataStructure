@@ -1,10 +1,7 @@
 import BinaryHeap.*;
 import Graph.*;
 import HashTable.*;
-import LinkedList.*;
 import LinkedList.LinkedList;
-import Sort.InsertionSort;
-import Sort.ShellSort;
 
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
@@ -14,13 +11,13 @@ public class Main {
 
     public static void main(String[] args) {
         testSort();
-//        printLeftistHeap();
-//        printBinaryHeap();
-//        testHashTable0(); //分离链接法
-//        testHashTable1(true); //开放地址法（true线性探测 false平方探测）
-//        testHashTable1(false);
-//        testDFS();
-//        testLinkedList();
+        printLeftistHeap();
+        printBinaryHeap();
+        testHashTable0(); //分离链接法
+        testHashTable1(true); //开放地址法（true线性探测 false平方探测）
+        testHashTable1(false);
+        testDFS();
+        testLinkedList();
     }
 
     private static void testSort() {
