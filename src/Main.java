@@ -18,6 +18,7 @@ public class Main {
         testHashTable1(false);
         testDFS();
         testLinkedList();
+
     }
 
     private static void testSort() {
@@ -28,7 +29,7 @@ public class Main {
         for (int i = 1; i <= 2 << 18; i++)
             testArray.add(random.nextInt(2 << 20));
 
-        //showSortCostTime("Sort.InsertionSort", testArray.toArray(new Integer[]{}));
+        showSortCostTime("Sort.InsertionSort", testArray.toArray(new Integer[]{}));
         showSortCostTime("Sort.ShellSort", testArray.toArray(new Integer[]{}));
         showSortCostTime("Sort.HeapSort", testArray.toArray(new Integer[]{}));
         showSortCostTime("Sort.MergeSort", testArray.toArray(new Integer[]{}));

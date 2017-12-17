@@ -33,7 +33,7 @@ public class QuickSort {
                 while (input[++i] < pivot);
                 while (input[--j] > pivot);
 
-                if (i > j)
+                if (i < j)
                     swap(input, i, j);
                 else break;
             }

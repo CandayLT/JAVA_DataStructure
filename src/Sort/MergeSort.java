@@ -13,7 +13,6 @@ public class MergeSort {
     }
 
     public static void mergeSort(Integer[] input, Integer[] temp, int left, int right) {
-
         if (left < right) {
             int center = (left + right) / 2;
             mergeSort(input, temp, left, center);
@@ -26,23 +25,21 @@ public class MergeSort {
     private static void merge(Integer[] input, Integer[] temp, int left, int center, int right) {
         int leftPos = left, rightPos = center + 1;
 
-        int tPos = 0;
-        for (; leftPos <= left && rightPos <= right; tPos++) {
-            if (input[leftPos] < input[right])
-                temp[tPos++] = input[leftPos++];
+        int tPos;
+        for (tPos = 0; leftPos <= center && rightPos <= right; tPos++) {
+            if (input[leftPos] < input[rightPos])
+                temp[tPos] = input[leftPos++];
             else
-                temp[tPos++] = input[rightPos++];
+                temp[tPos] = input[rightPos++];
         }
 
-        while (leftPos <= left || rightPos <= right) {
-            if (leftPos <= left)
-                temp[tPos++] = input[left++];
-            else
-                temp[tPos++] = input[right++];
-        }
+        while (leftPos <= center)
+            temp[tPos++] = input[leftPos++];
 
-        tPos = 0;
-        while (left <= right)
-            input[left++] = input[tPos++];
+        while (rightPos <= right)
+            temp[tPos++] = input[rightPos++];
+
+        for (tPos = 0; left <= right; left++, tPos++)
+            input[left] = input[tPos];
     }
 }
