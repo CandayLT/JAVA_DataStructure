@@ -26,10 +26,10 @@ public class Main {
 
         Random random = new Random();
 
-        for (int i = 1; i <= 2 << 18; i++)
+        for (int i = 1; i <= 2 << 20; i++)
             testArray.add(random.nextInt(2 << 20));
 
-        showSortCostTime("Sort.InsertionSort", testArray.toArray(new Integer[]{}));
+        //showSortCostTime("Sort.InsertionSort", testArray.toArray(new Integer[]{}));
         showSortCostTime("Sort.ShellSort", testArray.toArray(new Integer[]{}));
         showSortCostTime("Sort.HeapSort", testArray.toArray(new Integer[]{}));
         showSortCostTime("Sort.MergeSort", testArray.toArray(new Integer[]{}));
@@ -154,12 +154,14 @@ public class Main {
         relations[7].setRelation('c', 'g');
         relations[8].setRelation('f', 'g');
 
-        Graph graph = new Graph(vertexElement);
-
-        graph.creatGraph(relations);
-
-        DFS dfs = new DFS(graph);
+        GraphMatrix graphMatrix = new GraphMatrix(vertexElement);
+        graphMatrix.initGraph(relations);
+        DFS dfs = new DFS(graphMatrix);
         dfs.toDFS('f');
         System.out.println();
+
+        GraphList<Character> graphList = new GraphList<>(vertexElement.length, vertexElement);
+        graphList.initGraph(relations);
+        graphList.printGraph();
     }
 }
