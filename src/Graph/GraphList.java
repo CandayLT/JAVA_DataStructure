@@ -58,6 +58,54 @@ public class GraphList <E> implements IGraph{
         }
     }
 
+    int[] indegree;
+    public void topSort() {
+        initInDegreeArray();
+        GraphNode c;
+        System.out.print("TopSort is : ");
+
+        for (int count = 0; count < eNum; count++) {
+            c = findInDegreeZeroNode();
+
+            if(c == null)
+                return;
+
+            System.out.print(c.e + ", ");
+
+            int identity = findElement(c.e);
+            GraphNode node = headPoints[identity];
+
+            while (node != null) {
+                identity = findElement(node.e);
+                indegree[identity]--;
+                node = node.next;
+            }
+
+        }
+        System.out.println();
+    }
+
+    private void initInDegreeArray() {
+        indegree = new int[eNum];
+
+        for (int i = 0; i < eNum; i++) {
+            GraphNode node = headPoints[i];
+            while (node.next != null) {
+                indegree[findElement(node.next.e)]++;
+                node = node.next;
+            }
+        }
+    }
+
+    private GraphNode findInDegreeZeroNode() {
+        for (int i = 0; i < indegree.length; i++) {
+            if (indegree[i] == 0)
+                return headPoints[i];
+        }
+
+        return null;
+    }
+
     class GraphNode <E>{
         E e;
         GraphNode next;
