@@ -20,11 +20,11 @@ public class GraphMatrix implements IGraph {
             matrix[findElement(e[0])][findElement(e[1])] = 1;
             matrix[findElement(e[1])][findElement(e[0])] = 1;
         }
-
-        printMatrix();
     }
 
     public void printMatrix() {
+        System.out.println();
+        System.out.println("Graph by Matrix : ");
         for (int i = 0; i < graphNum; i++) {
             if (i == 0) {
                 System.out.print("   ");

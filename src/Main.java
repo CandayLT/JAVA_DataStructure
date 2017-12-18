@@ -16,8 +16,8 @@ public class Main {
         testHashTable0(); //分离链接法
         testHashTable1(true); //开放地址法（true线性探测 false平方探测）
         testHashTable1(false);
-        testDFS();
-        testLinkedList();
+        testGraph();
+//        testLinkedList();
 
     }
 
@@ -52,6 +52,8 @@ public class Main {
     }
 
     private static void printLeftistHeap() {
+        System.out.println();
+        //System.out.println("printLeftistHeap : ");
         LeftistHeap leftistHeap = new LeftistHeap();
 
         for (int i = 1; i <= 10; i++)
@@ -63,6 +65,8 @@ public class Main {
     }
 
     private static void printBinaryHeap() {
+        System.out.println();
+        System.out.println("printBinaryHeap : ");
         BinaryHeap heap = new BinaryHeap(21);
         Integer[] arrays = new Integer[]{-0xff, 150, 80, 40, 30, 10, 50, 110, 100, 20, 90, 60, 70, 120, 140, 130};
         heap.buildHeap(arrays);
@@ -78,6 +82,8 @@ public class Main {
     }
 
     private static void testHashTable1(boolean type) {
+        System.out.println();
+        System.out.println("HashTable : ");
         OpenAddressingHashing hashTable = new OpenAddressingHashing(100, type);
         //linearProbing == false为平方探测，true为线性探测
 
@@ -125,7 +131,7 @@ public class Main {
         }
     }
 
-    static void testDFS() {
+    static void testGraph() {
         char[] vertexElement = new char[8];
 
         vertexElement[0] = 'a';
@@ -140,9 +146,8 @@ public class Main {
 
         Relation[] relations = new Relation[9];
 
-        for (int i = 0; i < relations.length; i++) {
+        for (int i = 0; i < relations.length; i++)
             relations[i] = new Relation();
-        }
 
         relations[0].setRelation('a', 'b');
         relations[1].setRelation('a', 'c');
@@ -156,12 +161,39 @@ public class Main {
 
         GraphMatrix graphMatrix = new GraphMatrix(vertexElement);
         graphMatrix.initGraph(relations);
-        DFS dfs = new DFS(graphMatrix);
-        dfs.toDFS('f');
+        graphMatrix.printMatrix();
+        new DFS(graphMatrix, 'f');
         System.out.println();
 
-        GraphList<Character> graphList = new GraphList<>(vertexElement.length, vertexElement);
-        graphList.initGraph(relations);
+        char[] v = new char[7];
+        v[0] = 'a';
+        v[1] = 'b';
+        v[2] = 'c';
+        v[3] = 'd';
+        v[4] = 'e';
+        v[5] = 'f';
+        v[6] = 'g';
+
+        Relation[] r = new Relation[12];
+        for (int i = 0; i < r.length; i++)
+            r[i] = new Relation();
+
+        r[0].setRelation('a', 'b');
+        r[1].setRelation('a', 'd');
+        r[2].setRelation('a', 'c');
+        r[3].setRelation('b', 'd');
+        r[4].setRelation('b', 'e');
+        r[5].setRelation('c', 'f');
+        r[6].setRelation('d', 'f');
+        r[7].setRelation('d', 'g');
+        r[8].setRelation('d', 'c');
+        r[9].setRelation('e', 'd');
+        r[10].setRelation('e', 'g');
+        r[11].setRelation('g', 'f');
+
+        GraphList<Character> graphList = new GraphList<>(v.length, v);
+        graphList.initGraph(r);
         graphList.printGraph();
+        graphList.topSort();
     }
 }

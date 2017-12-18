@@ -9,11 +9,15 @@ public class DFS {
     GraphMatrix graphMatrix;
     Map<Character, Boolean> isVisit = new HashMap<>();
 
-    public DFS(GraphMatrix graphMatrix) {
+    public DFS(GraphMatrix graphMatrix, char startV) {
         this.graphMatrix = graphMatrix;
 
         for (int i = 0; i < graphMatrix.graphNum; i++)
             isVisit.put(graphMatrix.vertexElement[i], false);
+
+        System.out.println();
+        System.out.println("DFS(start from '" + startV + "') : ");
+        toDFS(startV);
     }
 
     public void toDFS(char c) {
